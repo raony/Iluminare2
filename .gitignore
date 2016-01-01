@@ -65,3 +65,4 @@ target/
 staticfiles/
 .vagrant/
 .venv/
+.DS_Store
