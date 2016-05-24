@@ -10,7 +10,7 @@ O projeto roda com python 3 e Django 1.9. É fortemente recomendado que você us
 ```
     $ git clone https://github.com/raony/Iluminare2.git
     $ cd Iluminare2
-    $ pip install -r core.txt
+    $ pip install -r configs/core.txt
     $ python manage.py runserver
 ```
 
