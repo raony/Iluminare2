@@ -59,6 +59,7 @@ docs/_build/
 target/
 
 #Ipython Notebook
+/db.sqlite3
 .ipynb_checkpoints
 .idea/
 staticfiles/
