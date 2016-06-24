@@ -1,5 +1,5 @@
 .container {
-    padding-top: 60px;
+    padding-top: 75px;
 }
 
 .top-panel {
@@ -13,4 +13,14 @@
     position:fixed;
     bottom: 45px;
     right: 24px;
+}
+
+.errorlist {
+    color: #B22222;
+}
+
+ul.errorlist {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }

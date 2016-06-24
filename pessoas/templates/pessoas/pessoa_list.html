@@ -3,15 +3,15 @@
 {% block top_panel %}
 <div class="row">
     <div class="col-sm-9"><h1>Pessoas</h1></div>
-    <div class="col-sm-3 hidden-xs" style="padding-top:20px"><button class="btn btn-lg btn-primary">Adicionar</button></div>
+    <div class="col-sm-3 hidden-xs" style="padding-top:20px">{% include 'pessoas/bits/botao_adicionar.html' %}</div>
 </div>
 {% endblock %}
 
 {% block content %}
 <div class="hidden-sm hidden-md hidden-lg action-panel-xs">
-    <button class="btn btn-lg btn-primary">Adicionar</button>
+    {% include 'pessoas/bits/botao_adicionar.html' %}
 </div>
-<table class="table table-condensed table-striped">
+<table class="table table-striped">
     <thead>
     <tr>
         <th>Nome</th>
@@ -28,3 +28,4 @@
     </tbody>
 </table>
 {% endblock %}
+
