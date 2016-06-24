@@ -1,0 +1,16 @@
+.container {
+    padding-top: 60px;
+}
+
+.top-panel {
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    background-color: #fff;
+}
+
+.action-panel-xs {
+    position:fixed;
+    bottom: 45px;
+    right: 24px;
+}

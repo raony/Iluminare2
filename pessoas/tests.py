@@ -14,3 +14,10 @@ class ListarPessoasTeste(TestCase):
         response = self.client.get(reverse('pessoas-listar'))
         self.assertContains(response, pessoa.nome)
         self.assertContains(response, pessoa.sobrenome)
+
+    def test_template(self):
+        response = self.client.get(reverse('pessoas-listar'))
+        self.assertTemplateUsed(response, 'pessoas/pessoa_list.html')
+
+    def test_link_para_adicionar(self):
+        response = self.client.get(reverse('pessoas-listar'))

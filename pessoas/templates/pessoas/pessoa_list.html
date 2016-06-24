@@ -1,14 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Iluminare2: Listar Pessoas</title>
-</head>
-<body>
-{% for pessoa in object_list %}
-    <li>{{ pessoa.nome }} - {{ pessoa.sobrenome }}</li>
-{% empty %}
-    <li>Lista vazia.</li>
-{% endfor %}
-</body>
-</html>
+{% extends "layout.html" %}
+
+{% block top_panel %}
+<div class="row">
+    <div class="col-sm-9"><h1>Pessoas</h1></div>
+    <div class="col-sm-3 hidden-xs" style="padding-top:20px"><button class="btn btn-lg btn-primary">Adicionar</button></div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="hidden-sm hidden-md hidden-lg action-panel-xs">
+    <button class="btn btn-lg btn-primary">Adicionar</button>
+</div>
+<table class="table table-condensed table-striped">
+    <thead>
+    <tr>
+        <th>Nome</th>
+        <th>Sobrenome</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for pessoa in object_list %}
+        <tr>
+            <td>{{ pessoa.nome }}</td>
+            <td>{{ pessoa.sobrenome }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
