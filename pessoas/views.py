@@ -12,7 +12,7 @@ class Listar(ListView):
 
 class Adicionar(CreateView):
     model = models.Pessoa
-    fields = ['nome', 'sobrenome']
+    fields = '__all__'
     success_url = reverse_lazy('pessoas-listar')
 
 class Visualizar(DetailView):

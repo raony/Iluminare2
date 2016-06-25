@@ -2,6 +2,10 @@
     padding-top: 70px;
 }
 
+.container {
+    max-width: 730px;
+}
+
 a.navbar-title {
     font-size: 2em;
     margin-top: 5px;

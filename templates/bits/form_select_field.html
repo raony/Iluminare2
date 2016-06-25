@@ -1,0 +1,13 @@
+{% extends "bits/form_field_base.html" %}
+{% block widget %}
+<select class="form-control" id="id_{{ field.name }}" name="{{ field.name }}">
+    {% for value, desc in field.field.choices %}
+    {% if forloop.first %}
+    <option class="default" value {% if not value %}selected="selected"{% endif %}>{{ label|default_if_none:field.label }}</option>
+    {% else %}
+    <option value="{{ value }}"
+            {% if value == field.value %}selected="selected"{% endif %}>{{ desc }}</option>
+    {% endif %}
+    {% endfor %}
+</select>
+{% endblock %}

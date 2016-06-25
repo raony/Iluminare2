@@ -1,0 +1,4 @@
+{% extends "bits/form_field_base.html" %}
+{% block widget %}
+<input type="{% if input_type %}{{ input_type }}{% else %}text{% endif %}" class="form-control" id="id_{{ field.name }}" name="{{ field.name }}" placeholder="{% if label %}{{ label }}{% else %}{{ field.label }}{% endif %}" value="{{ field.value|default_if_none:"" }}">
+{% endblock %}
