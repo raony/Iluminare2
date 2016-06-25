@@ -1,12 +1,20 @@
-.container {
-    padding-top: 75px;
+.content {
+    padding-top: 70px;
 }
 
-.top-panel {
-    position: fixed;
-    top: 0px;
-    width: 100%;
-    background-color: #fff;
+a.navbar-title {
+    font-size: 2em;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: inherit;
+    text-decoration: inherit;
+    float: left;
+}
+
+.top-action {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 5px;
 }
 
 .action-panel-xs {
@@ -23,4 +31,8 @@ ul.errorlist {
     list-style: none;
     padding: 0;
     margin: 0;
+}
+
+tbody>tr.selectable:active {
+    background: #AED6F1;
 }

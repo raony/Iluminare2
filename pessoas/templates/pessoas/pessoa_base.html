@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block title_url %}
+{% url "pessoas-listar" %}
+{% endblock %}
+
+{% block title %}
+Pessoas
+{% endblock %}
+
+{% block navbar %}
+{% include "bits/navbar.html" with pessoas=True %}
+{% endblock %}

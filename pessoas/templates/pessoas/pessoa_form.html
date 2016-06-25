@@ -1,10 +1,7 @@
-{% extends "layout.html" %}
-
-{% block top_panel %}
-<h1>Pessoas: Adicionar</h1>
-{% endblock %}
+{% extends "pessoas/pessoa_base.html" %}
 
 {% block content %}
+<h1>Adicionar pessoa</h1>
 <form action="." method="post" class="form-horizontal">
     {% csrf_token %}
     <div class="form-group{% if form.nome.errors %} has-error{% endif %}">

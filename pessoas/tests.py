@@ -52,3 +52,10 @@ class AdicionarPessoasTeste(WebTest):
         response = adicionar.form.submit()
         self.assertFormError(response, 'form', 'sobrenome', 'Este campo é obrigatório.')
 
+class VisualizarPessoasTeste(WebTest):
+    def test_retorna_200_get(self):
+        pessoa = Pessoa.objects.create(nome='teste', sobrenome='teste2')
+        response = self.app.get(reverse('pessoas-visualizar', args=[pessoa.pk,]))
+        self.assertContains(response, pessoa.nome)
+        self.assertContains(response, pessoa.sobrenome)
+

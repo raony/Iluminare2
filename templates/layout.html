@@ -21,10 +21,29 @@
     <![endif]-->
   </head>
   <body>
-    <div class="container">
-      <div class="top-panel">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+            <span class="sr-only">Exibir navegação</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="/" class="navbar-brand glyphicon glyphicon-lamp"></a>
+
+          <a class="navbar-text navbar-title hidden-xs" href="/">Iluminare 2</a>
+          <a class="navbar-text navbar-title hidden-sm hidden-md hidden-lg" href="{% block title_url %}{% endblock %}">{% block title %}{% endblock %}</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+          {% block navbar %}{% endblock %}
           {% block top_panel %}{% endblock %}
+        </div>
+
       </div>
+    </nav>
+    <div class="container content">
       {% block content %}{% endblock %}
     </div>
 
@@ -32,5 +51,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+    {% block extra_scripts %}{% endblock %}
   </body>
 </html>
