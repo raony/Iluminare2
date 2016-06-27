@@ -59,6 +59,13 @@ class VisualizarPessoasTeste(WebTest):
         self.assertContains(response, pessoa.nome)
         self.assertContains(response, pessoa.sobrenome)
 
+    def test_link_atualizar(self):
+        pessoa = Pessoa.objects.create(nome='teste', sobrenome='teste2')
+        visualizar = self.app.get(reverse('pessoas-visualizar', args=[pessoa.pk, ]))
+        atualizar = visualizar.click('Atualizar', index=0)
+        self.assertEquals(200, atualizar.status_code)
+        self.assertEquals(reverse('pessoas-atualizar', args=[pessoa.pk,]), atualizar.request.path)
+
 class AtualizarPessoasTeste(WebTest):
     def test_atualizar(self):
         pessoa = Pessoa.objects.create(nome='teste', sobrenome='teste2')

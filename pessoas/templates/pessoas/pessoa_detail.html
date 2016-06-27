@@ -1,7 +1,14 @@
 {% extends "pessoas/pessoa_base.html" %}
 
+{% block top_panel %}
+{% include 'pessoas/bits/botao_atualizar.html' with nav=True %}
+{% endblock %}
+
 {% block content %}
 <h1>Detalhes</h1>
+<div class="hidden-sm hidden-md hidden-lg action-panel-xs">
+    {% include 'pessoas/bits/botao_atualizar.html' %}
+</div>
 <div class="row">
     <div class="col-sm-6">
         <div class="row">
