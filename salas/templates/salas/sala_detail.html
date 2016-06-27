@@ -1,0 +1,38 @@
+{% extends "salas/sala_base.html" %}
+
+{% block top_panel %}
+{% include 'salas/bits/botao_atualizar.html' with nav=True %}
+{% endblock %}
+
+{% block content %}
+<h1>Detalhes</h1>
+<div class="hidden-sm hidden-md hidden-lg action-panel-xs">
+    {% include 'salas/bits/botao_atualizar.html' %}
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="row">
+            <div class="col-sm-12">
+                <h4>Nome</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <span>{{ object.nome }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="row">
+            <div class="col-sm-12">
+                <h4>Descrição</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <span>{{ object.descrição }}</span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

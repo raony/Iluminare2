@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block title_url %}
+{% url "sala-listar" %}
+{% endblock %}
+
+{% block title %}
+Salas
+{% endblock %}
+
+{% block navbar %}
+{% include "bits/navbar.html" with salas=True %}
+{% endblock %}

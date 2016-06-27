@@ -1,0 +1,33 @@
+{% extends "salas/sala_base.html" %}
+{% load staticfiles %}
+
+{% block top_panel %}
+{% include 'salas/bits/botao_adicionar.html' with nav=True %}
+{% endblock %}
+
+{% block content %}
+<h1>Listagem</h1>
+<div class="hidden-sm hidden-md hidden-lg action-panel-xs">
+    {% include 'salas/bits/botao_adicionar.html' %}
+</div>
+<table id="sala-lista" class="table table-striped">
+    <thead>
+    <tr>
+        <th>Nome</th>
+        <th>Descrição</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for sala in object_list %}
+        <tr class="selectable" data-url="{% url 'sala-visualizar' sala.pk %}">
+            <td>{{ sala.nome }}</td>
+            <td>{{ sala.descricao }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{% static "js/salas.js" %}"></script>
+{% endblock %}

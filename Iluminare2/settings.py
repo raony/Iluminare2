@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Iluminare',
     'pessoas',
+    'salas',
 ]
 
 MIDDLEWARE_CLASSES = [
