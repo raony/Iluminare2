@@ -28,5 +28,126 @@
         </div>
     </div>
 </div>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="row">
+            <div class="col-sm-12">
+                <h4>Gênero</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <span>{{ object.get_genero_display|default:"" }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="row">
+            <div class="col-sm-12">
+                <h4>Estado civil</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <span>{{ object.get_estado_civil_display|default:"" }}</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="row">
+            <div class="col-sm-12">
+                <h4>Gênero</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <span>{{ object.get_genero_display|default:"" }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="row">
+            <div class="col-sm-12">
+                <h4>Escolaridade</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <span>{{ object.get_escolaridade_display|default:"" }}</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr/>
+<h2>Endereço</h2>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="row">
+            <div class="col-sm-12">
+                <h4>Rua, complemento</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <span>{{ object.endereco|default:"" }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="row">
+            <div class="col-sm-12">
+                <h4>Bairro</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <span>{{ object.bairro|default:"" }}</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="row">
+            <div class="col-sm-12">
+                <h4>Cidade</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <span>{{ object.cidade|default:"" }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="row">
+            <div class="col-sm-12">
+                <h4>Estado</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <span>{{ object.get_estado_display|default:"" }}</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="row">
+            <div class="col-sm-12">
+                <h4>CEP</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <span>{{ object.cep|default:"" }}</span>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}

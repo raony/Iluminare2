@@ -59,3 +59,12 @@ class VisualizarPessoasTeste(WebTest):
         self.assertContains(response, pessoa.nome)
         self.assertContains(response, pessoa.sobrenome)
 
+class AtualizarPessoasTeste(WebTest):
+    def test_atualizar(self):
+        pessoa = Pessoa.objects.create(nome='teste', sobrenome='teste2')
+        atualizar = self.app.get(reverse('pessoas-atualizar', args=[pessoa.pk,]))
+        atualizar.form['nome'] = 'novo nome'
+        resultado = atualizar.form.submit()
+        self.assertRedirects(resultado, reverse('pessoas-visualizar', args=[pessoa.pk,]))
+        self.assertEqual('novo nome', Pessoa.objects.get(pk=pessoa.pk).nome)
+

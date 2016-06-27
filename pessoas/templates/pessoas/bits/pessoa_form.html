@@ -1,24 +1,12 @@
-{% extends "pessoas/pessoa_base.html" %}
-
-{% block content %}
-<h1>Adicionar pessoa</h1>
-<form action="." method="post" class="form-horizontal">
-    {% csrf_token %}
     {% include "bits/form_input_field.html" with field=form.nome %}
     {% include "bits/form_input_field.html" with field=form.sobrenome %}
     {% include "bits/form_input_field.html" with field=form.data_nascimento label="Data de nascimento" input_type="date" label_visible=True short=True%}
     {% include "bits/form_input_field.html" with field=form.email label="E-mail" input_type="email" %}
     {% include "bits/form_select_field.html" with field=form.genero label="Gênero"%}
+    {% include "bits/form_select_field.html" with field=form.estado_civil label="Estado civil"%}
     {% include "bits/form_select_field.html" with field=form.escolaridade label="Escolaridade"%}
     {% include "bits/form_input_field.html" with field=form.endereco label="Endereço"%}
     {% include "bits/form_input_field.html" with field=form.bairro %}
     {% include "bits/form_input_field.html" with field=form.cidade %}
     {% include "bits/form_select_field.html" with field=form.estado label="Estado"%}
     {% include "bits/form_input_field.html" with field=form.cep label="CEP" %}
-    <div class="form-group">
-        <div class="col-sm-10">
-            <input type="submit" value="Adicionar" class="btn btn-lg btn-primary" />
-        </div>
-    </div>
-</form>
-{% endblock %}
