@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'Iluminare',
     'pessoas',
     'salas',
+    'tratamento',
 ]
 
 MIDDLEWARE_CLASSES = [

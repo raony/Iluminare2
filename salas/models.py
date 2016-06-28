@@ -1,5 +1,4 @@
 from django.db import models
-from pessoas.models import Pessoa
 
 class Sala(models.Model):
     nome = models.CharField(max_length=200)

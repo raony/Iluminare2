@@ -19,7 +19,7 @@
     </thead>
     <tbody>
     {% for sala in object_list %}
-        <tr class="selectable" data-url="{% url 'sala-visualizar' sala.pk %}">
+        <tr class="selectable" data-url="{% url 'salas-visualizar' sala.pk %}">
             <td>{{ sala.nome }}</td>
             <td>{{ sala.descricao }}</td>
         </tr>
