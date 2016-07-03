@@ -2,13 +2,13 @@
 {% load staticfiles %}
 
 {% block top_panel %}
-{% include 'pessoas/bits/botao_adicionar.html' with nav=True %}
+{% include 'bits/botao_adicionar.html' with nav=True btnurl='pessoas-adicionar' %}
 {% endblock %}
 
 {% block content %}
 <h1>Listagem</h1>
 <div class="hidden-sm hidden-md hidden-lg action-panel-xs">
-    {% include 'pessoas/bits/botao_adicionar.html' %}
+    {% include 'bits/botao_adicionar.html' with btnurl='pessoas-adicionar' %}
 </div>
 <table id="pessoa-lista" class="table table-striped">
     <thead>

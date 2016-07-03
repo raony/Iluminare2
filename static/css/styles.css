@@ -25,6 +25,7 @@ a.navbar-title {
     position:fixed;
     bottom: 45px;
     right: 24px;
+    z-index: 999;
 }
 
 .errorlist {

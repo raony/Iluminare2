@@ -1,13 +1,13 @@
 {% extends "salas/sala_base.html" %}
 
 {% block top_panel %}
-{% include 'salas/bits/botao_atualizar.html' with nav=True %}
+{% include 'bits/botao_atualizar.html' with nav=True btnurl='salas-atualizar' %}
 {% endblock %}
 
 {% block content %}
 <h1>Detalhes</h1>
 <div class="hidden-sm hidden-md hidden-lg action-panel-xs">
-    {% include 'salas/bits/botao_atualizar.html' %}
+    {% include 'bits/botao_atualizar.html' with btnurl='salas-atualizar' %}
 </div>
 <div class="row">
     <div class="col-sm-6">
