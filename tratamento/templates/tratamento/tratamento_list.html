@@ -1,0 +1,37 @@
+{% extends "tratamento/tratamento_base.html" %}
+{% load staticfiles %}
+
+{% block top_panel %}
+{% include 'bits/botao_adicionar.html' with nav=True btnurl='tratamentos-adicionar' %}
+{% endblock %}
+
+{% block content %}
+<h1>Listagem</h1>
+<div class="hidden-sm hidden-md hidden-lg action-panel-xs">
+    {% include 'bits/botao_adicionar.html' with btnurl='tratamentos-adicionar' %}
+</div>
+<table id="pessoa-lista" class="table table-striped">
+    <thead>
+    <tr>
+        <th>Paciente</th>
+        <th>Sala</th>
+        <th>Início</th>
+        <th>Completo</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for tratamento in object_list %}
+        <tr class="selectable" data-url="{% url 'tratamentos-visualizar' tratamento.pk %}">
+            <td>{{ tratamento.paciente }}</td>
+            <td>{{ tratamento.sala }}</td>
+            <td>{{ tratamento.inicio }}</td>
+            <td></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{% static "js/pessoas.js" %}"></script>
+{% endblock %}

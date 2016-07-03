@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block title_url %}
+{% url "tratamentos-listar" %}
+{% endblock %}
+
+{% block title %}
+Tratamentos
+{% endblock %}
+
+{% block navbar %}
+{% include "bits/navbar.html" with tratamentos=True %}
+{% endblock %}

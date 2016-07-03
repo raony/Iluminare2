@@ -72,3 +72,6 @@ class Pessoa(models.Model):
     cep = models.CharField(max_length=15, blank=True, null=True)
     email = models.EmailField(max_length=100, null=True, blank=True)
     data_nascimento = models.DateField(blank=True, null=True)
+
+    def __str__(self):
+        return '{0} {1}'.format(self.nome, self.sobrenome)
