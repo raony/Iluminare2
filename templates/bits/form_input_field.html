@@ -3,6 +3,5 @@
 {% block widget %}
 <input type="{% if input_type %}{{ input_type }}{% else %}text{% endif %}" class="form-control" id="id_{{ field.name }}"
        name="{{ field.name }}" placeholder="{% if label %}{{ label }}{% else %}{{ field.label }}{% endif %}"
-       value="{% if field|is_date_field %}{{ field.value|date:"c" }}
-        {% else %}{{ field.value|default_if_none:"" }}{% endif %}">
+       value="{% if field|is_date_field %}{{ field.value|date:"c" }}{% else %}{{ field.value|default_if_none:"" }}{% endif %}">
 {% endblock %}
