@@ -41,3 +41,8 @@ ul.errorlist {
 tbody>tr.selectable:active {
     background: #AED6F1;
 }
+
+.title-row {
+    display: flex;
+    align-items: center;
+}

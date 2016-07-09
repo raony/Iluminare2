@@ -75,3 +75,8 @@ class Pessoa(models.Model):
 
     def __str__(self):
         return '{0} {1}'.format(self.nome, self.sobrenome)
+
+    @property
+    def tratamento(self):
+        if self.tratamento_set.filter(ativo=True).exists():
+            return self.tratamento_set.filter(ativo=True).order_by('-inicio')[0]

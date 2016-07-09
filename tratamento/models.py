@@ -7,6 +7,7 @@ from salas.models import Sala
 class Tratamento(models.Model):
     paciente = models.ForeignKey(Pessoa)
     inicio = models.DateField()
+    ativo = models.BooleanField(default=True)
 
 class Sessoes(models.Model):
     tratamento = models.ForeignKey(Tratamento)

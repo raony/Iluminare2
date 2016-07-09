@@ -5,7 +5,13 @@
 {% endblock %}
 
 {% block content %}
-<h1>Detalhes</h1>
+<div class="row title-row">
+    <div class="col-xs-3"><h1>Detalhes</h1></div>
+    {% if pessoa.tratamento %}
+    <div class="col-xs-6"><a class="btn btn-default btn-lg" href="{% url 'tratamentos-visualizar' pessoa.tratamento.pk %}">Tratamento</a> </div>
+    {% endif %}
+</div>
+
 <div class="hidden-sm hidden-md hidden-lg action-panel-xs">
     {% include 'bits/botao_atualizar.html' with btnurl='pessoas-atualizar' %}
 </div>

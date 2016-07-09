@@ -1,7 +1,32 @@
+from django.test import TestCase
+
 from django_webtest import WebTest
 from django.core.urlresolvers import reverse
+from datetime import datetime
 
 from .models import Pessoa
+from tratamento.models import Tratamento
+
+# Testes unitarios
+class PessoaTeste(TestCase):
+    def test_tratamento_atual_sera_o_mais_recente_ativo(self):
+        pessoa = Pessoa.objects.create(nome='teste', sobrenome='teste2')
+        tratamento_antigo = Tratamento.objects.create(paciente=pessoa, inicio=datetime(2015,5,4), ativo=True)
+        tratamento_atual = Tratamento.objects.create(paciente=pessoa, inicio=datetime(2016, 5, 4), ativo=True)
+        tratamento_inativo = Tratamento.objects.create(paciente=pessoa, inicio=datetime(2016, 6, 4), ativo=False)
+
+        self.assertEquals(tratamento_atual, pessoa.tratamento)
+
+    def test_tratamento_inativo(self):
+        pessoa = Pessoa.objects.create(nome='teste', sobrenome='teste2')
+        tratamento_inativo = Tratamento.objects.create(paciente=pessoa, inicio=datetime(2016, 6, 4), ativo=False)
+
+        self.assertEquals(None, pessoa.tratamento)
+
+    def test_tratamento_nao_existente(self):
+        pessoa = Pessoa.objects.create(nome='teste', sobrenome='teste2')
+
+        self.assertEquals(None, pessoa.tratamento)
 
 # Testes de funcao
 class ListarPessoasTeste(WebTest):
@@ -65,6 +90,17 @@ class VisualizarPessoasTeste(WebTest):
         atualizar = visualizar.click('Atualizar', index=0)
         self.assertEquals(200, atualizar.status_code)
         self.assertEquals(reverse('pessoas-atualizar', args=[pessoa.pk,]), atualizar.request.path)
+
+    def test_link_tratamento(self):
+        pessoa = Pessoa.objects.create(nome='teste', sobrenome='teste2')
+        tratamento = Tratamento.objects.create(paciente=pessoa, inicio=datetime.today())
+
+        visualizar = self.app.get(reverse('pessoas-visualizar', args=[pessoa.pk, ]))
+        tratamento_visualizar = visualizar.click('Tratamento', index=1) #o primeiro link é o da navbar
+
+        self.assertEquals(200, tratamento_visualizar.status_code)
+        self.assertEquals(reverse('tratamentos-visualizar', args=[tratamento.pk,]),
+                          tratamento_visualizar.request.path)
 
 class AtualizarPessoasTeste(WebTest):
     def test_atualizar(self):
