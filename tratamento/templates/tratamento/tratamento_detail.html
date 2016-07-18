@@ -35,4 +35,50 @@
         </div>
     </div>
 </div>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="row">
+            <div class="col-sm-12">
+                <h4>Situação</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <span>{{ object.ativo|yesno:"Ativa,Inativa" }}</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row title-row">
+     <div class="col-sm-3">
+        <h3>Sessões</h3>
+    </div>
+    <div class="col-sm-3">
+        <a class="btn btn-default" href="{% url 'sessoes-adicionar' object.pk %}">Adicionar sessao</a>
+    </div>
+</div>
+<table id="sessao-lista" class="table table-striped">
+    <thead>
+    <tr>
+        <th>Sala</th>
+        <th>Quantidade</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for sessao in object.sessao_set.all %}
+        <tr class="selectable" data-url="{% url 'tratamentos-visualizar' tratamento.pk %}">
+            <td>{{ sessao.sala }}</td>
+            <td>{{ sessao.quantidade }}</td>
+            <td class="action-column"><form method="post" action="{% url 'sessoes-remover' tratamento.pk sessao.pk %}">
+                {% csrf_token %}
+                <button id="asd" type="submit" class="btn btn-default action-item">
+                <span class="glyphicon glyphicon-remove-circle"></span></button>
+            </form></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<div class="accommodate-button hidden-sm hidden-md hidden-lg"></div>
 {% endblock %}

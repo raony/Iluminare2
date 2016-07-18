@@ -46,3 +46,37 @@ tbody>tr.selectable:active {
     display: flex;
     align-items: center;
 }
+
+.right-control {
+    text-align: right;
+}
+
+.action-column {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.action-item {
+    padding-top: 0;
+    padding-bottom: 0;
+    border: none;
+    background: none;
+}
+
+.action-item.active.focus, .action-item.active:focus, .action-item.focus, .action-item:active.focus,
+.action-item:active:focus, .action-item:focus, .action-item:hover, .action-item:active {
+    outline: none;
+    border: none;
+    background: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.accommodate-button {
+    height: 85px;
+}
+
+.action-item span {
+    color: #d9534f;
+    font-size: x-large;
+}

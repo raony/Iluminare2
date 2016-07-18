@@ -1,0 +1,15 @@
+<div class="form-group">
+    <div class="checkbox col-xs-12 right-control{% if field.errors %} has-error{% endif %}">
+        <label>
+            <input id="id_{{ field.name }}" name="{{ field.name }}" type="checkbox" data-toggle="toggle" data-on="{{ on }}" data-off="{{ off|default_if_none:on }}"{% if field.value %}checked="checked"{% endif %}>
+            {{ label|default_if_none:field.label }}
+        </label>
+        {% if field.errors %}
+        <ul class="errorlist">
+        {% for error in field.errors %}
+            <li><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> <strong>{{ error|escape }}</strong></li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+</div>

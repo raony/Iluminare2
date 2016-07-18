@@ -9,10 +9,15 @@ class Tratamento(models.Model):
     inicio = models.DateField()
     ativo = models.BooleanField(default=True)
 
-class Sessoes(models.Model):
+class Sessao(models.Model):
     tratamento = models.ForeignKey(Tratamento)
     sala = models.ForeignKey(Sala)
-    quantidade = models.PositiveSmallIntegerField(default=0)
+    quantidade = models.PositiveSmallIntegerField()
+
+def sessao_create(self, *args, **kwargs):
+    sessao = Sessao(*args, **kwargs)
+    sessao.save()
+    return sessao
 
 class Atendimento(models.Model):
     EVENTOS = (

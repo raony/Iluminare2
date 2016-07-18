@@ -102,6 +102,16 @@ class VisualizarPessoasTeste(WebTest):
         self.assertEquals(reverse('tratamentos-visualizar', args=[tratamento.pk,]),
                           tratamento_visualizar.request.path)
 
+    def test_link_novo_tratamento(self):
+        pessoa = Pessoa.objects.create(nome='teste', sobrenome='teste2')
+
+        visualizar = self.app.get(reverse('pessoas-visualizar', args=[pessoa.pk, ]))
+        tratamento_adicionar = visualizar.click('Novo Tratamento', index=0)
+
+        self.assertEquals(200, tratamento_adicionar.status_code)
+        self.assertEquals(reverse('tratamentos-pessoa-adicionar', args=[pessoa.pk, ]),
+                          tratamento_adicionar.request.path)
+
 class AtualizarPessoasTeste(WebTest):
     def test_atualizar(self):
         pessoa = Pessoa.objects.create(nome='teste', sobrenome='teste2')

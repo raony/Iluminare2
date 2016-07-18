@@ -9,6 +9,8 @@
     <div class="col-xs-3"><h1>Detalhes</h1></div>
     {% if pessoa.tratamento %}
     <div class="col-xs-6"><a class="btn btn-default btn-lg" href="{% url 'tratamentos-visualizar' pessoa.tratamento.pk %}">Tratamento</a> </div>
+    {% else %}
+    <div class="col-xs-6"><a class="btn btn-default btn-lg" href="{% url 'tratamentos-pessoa-adicionar' pessoa.pk %}">Novo Tratamento</a> </div>
     {% endif %}
 </div>
 

@@ -10,7 +10,7 @@
 <div class="hidden-sm hidden-md hidden-lg action-panel-xs">
     {% include 'bits/botao_adicionar.html' with btnurl='tratamentos-adicionar' %}
 </div>
-<table id="pessoa-lista" class="table table-striped">
+<table id="tratamento-lista" class="table table-striped">
     <thead>
     <tr>
         <th>Paciente</th>
@@ -33,5 +33,5 @@
 {% endblock %}
 
 {% block extra_scripts %}
-<script src="{% static "js/pessoas.js" %}"></script>
+<script src="{% static "js/tratamento.js" %}"></script>
 {% endblock %}

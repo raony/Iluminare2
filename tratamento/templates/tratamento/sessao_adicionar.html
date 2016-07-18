@@ -1,0 +1,16 @@
+{% extends "tratamento/tratamento_base.html" %}
+
+{% block content %}
+<h1>Adicionar sessão</h1>
+<form action="." method="post" class="form-horizontal">
+    {% csrf_token %}
+    {% include "bits/form_input_field.html" with field=form.tratamento input_type="hidden" %}
+    {% include "bits/form_select_field.html" with field=form.sala label="Sala" %}
+    {% include "bits/form_input_field.html" with field=form.quantidade label="Quantidade" %}
+    <div class="form-group">
+        <div class="col-sm-10">
+            <input type="submit" value="Adicionar" class="btn btn-lg btn-primary" />
+        </div>
+    </div>
+</form>
+{% endblock %}
