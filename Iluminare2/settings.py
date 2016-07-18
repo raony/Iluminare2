@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'pessoas',
     'salas',
     'tratamento',
+    'atendimentos',
 ]
 
 MIDDLEWARE_CLASSES = [

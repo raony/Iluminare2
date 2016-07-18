@@ -18,15 +18,3 @@ def sessao_create(self, *args, **kwargs):
     sessao = Sessao(*args, **kwargs)
     sessao.save()
     return sessao
-
-class Atendimento(models.Model):
-    EVENTOS = (
-        ('chegada', 'chegada'),
-        ('encaminhado à sala', 'encaminhado à sala'),
-        ('em atendimento', 'em atendimento'),
-        ('atendimento finalizado', 'atendimento finalizado'),
-    )
-
-    hora = models.DateTimeField()
-    paciente = models.ForeignKey(Pessoa)
-    evento = models.CharField(max_length=200, choices=EVENTOS)

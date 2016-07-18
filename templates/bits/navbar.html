@@ -1,4 +1,5 @@
 <ul class="nav navbar-nav">
+    <li class="{% if atendimento %}active hidden-xs{% endif %}"><a href="{% url "atendimento" %}">Atendimento</a></li>
     <li class="{% if pessoas %}active hidden-xs{% endif %}"><a href="{% url "pessoas-listar" %}">Pessoas</a></li>
     <li class="{% if salas %}active hidden-xs{% endif %}"><a href="{% url "salas-listar" %}">Salas</a></li>
     <li class="{% if tratamentos %}active hidden-xs{% endif %}"><a href="{% url "tratamentos-listar" %}">Tratamentos</a></li>
