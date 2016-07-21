@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block title_url %}
+{% url "atendimentos-entrada" %}
+{% endblock %}
+
+{% block title %}
+Atendimento
+{% endblock %}
+
+{% block navbar %}
+{% include "bits/navbar.html" with atendimentos=True %}
+{% endblock %}
+
+{% block content %}
+<h1>Atendimento</h1>
+<form class="form-horizontal">
+    <div class="form-group">
+        <div class="col-xs-9">
+            <input type="text" class="form-control" name="q">
+        </div>
+        <div class="col-xs-3">
+            <button type="submit" class="btn btn-primary">Buscar</button>
+        </div>
+    </div>
+</form>
+{% endblock %}

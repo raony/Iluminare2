@@ -28,6 +28,37 @@ class PessoaTeste(TestCase):
 
         self.assertEquals(None, pessoa.tratamento)
 
+    def test_remover_espacos_nome(self):
+        pessoa = Pessoa.objects.create(nome=' \t  luiz   \t carlos\tdaniel  \t', sobrenome='  \t romero  \t silva\tfilho  \t  ')
+        self.assertEquals('luiz carlos daniel', pessoa.nome)
+        self.assertEquals('romero silva filho', pessoa.sobrenome)
+
+    def test_nome_completo(self):
+        pessoa = Pessoa.objects.create(nome='luiz carlos', sobrenome='romero filho')
+        self.assertEquals('luiz carlos romero filho', pessoa.nome_completo)
+
+    def test_nome_completo_acento(self):
+        pessoa = Pessoa.objects.create(nome='Luís carlos', sobrenome='Gonçalves')
+        self.assertEquals('luis carlos goncalves', pessoa.nome_completo)
+
+    def test_buscar_pessoa_por_nome(self):
+        pessoa1 = Pessoa.objects.create(nome='luiz carlos', sobrenome='romero filho')
+        pessoa2 = Pessoa.objects.create(nome='carlos', sobrenome='gonçalves romeu dos santos')
+
+        self.assertEquals(0, len(Pessoa.objects.filter_by_name('ca')))
+        self.assertEquals(2, len(Pessoa.objects.filter_by_name('car')))
+        self.assertEquals(2, len(Pessoa.objects.filter_by_name('rome')))
+        self.assertEquals(1, len(Pessoa.objects.filter_by_name('romero')))
+
+    def test_buscar_pessoa_por_nome_duas_palavras(self):
+        pessoa1 = Pessoa.objects.create(nome='luiz carlos', sobrenome='romero filho')
+        pessoa2 = Pessoa.objects.create(nome='carlos', sobrenome='gonçalves romeu dos santos')
+
+        self.assertEquals(1, len(Pessoa.objects.filter_by_name('carlos filho')))
+        self.assertEquals(1, len(Pessoa.objects.filter_by_name('carlos goncalves')))
+        self.assertEquals(1, len(Pessoa.objects.filter_by_name('carlos gonçalves')))
+        self.assertEquals(0, len(Pessoa.objects.filter_by_name('ca go')))
+
 # Testes de funcao
 class ListarPessoasTeste(WebTest):
 

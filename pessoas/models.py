@@ -1,7 +1,21 @@
 from django.db import models
+from unidecode import unidecode
+
+class PessoaManager(models.Manager):
+    def filter_by_name(self, entrada):
+        termos = [unidecode(t.strip()) for t in entrada.lower().strip().replace('\t', ' ').split(' ') if len(t) > 2]
+        if not termos:
+            return self.none()
+        qs = self.all()
+        for termo in termos:
+            qs = qs.filter(nome_completo__icontains=termo)
+        return qs
+
 
 # Create your models here.
 class Pessoa(models.Model):
+    objects = PessoaManager()
+
     GENERO = (
         ('M', 'Masculino'),
         ('F', 'Feminino'),
@@ -72,6 +86,15 @@ class Pessoa(models.Model):
     cep = models.CharField(max_length=15, blank=True, null=True)
     email = models.EmailField(max_length=100, null=True, blank=True)
     data_nascimento = models.DateField(blank=True, null=True)
+
+    nome_completo = models.CharField(max_length=200, blank=True, default="")
+
+    def save(self, *args, **kwargs):
+        self.nome = ' '.join([x.strip() for x in self.nome.replace('\t', ' ').split(' ') if x.strip()])
+        self.sobrenome = ' '.join([x.strip() for x in self.sobrenome.replace('\t', ' ').split(' ') if x.strip()])
+        self.nome_completo = unidecode(" ".join([self.nome, self.sobrenome]).lower())
+        return super(Pessoa, self).save(*args, **kwargs)
+
 
     def __str__(self):
         return '{0} {1}'.format(self.nome, self.sobrenome)
