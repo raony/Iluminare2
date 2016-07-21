@@ -3,7 +3,7 @@ from unidecode import unidecode
 
 class PessoaManager(models.Manager):
     def filter_by_name(self, entrada):
-        termos = [unidecode(t.strip()) for t in entrada.lower().strip().replace('\t', ' ').split(' ') if len(t) > 2]
+        termos = [unidecode(t.strip()) for t in entrada.lower().strip().replace('\t', ' ').split(' ') if t]
         if not termos:
             return self.none()
         qs = self.all()
@@ -90,8 +90,8 @@ class Pessoa(models.Model):
     nome_completo = models.CharField(max_length=200, blank=True, default="")
 
     def save(self, *args, **kwargs):
-        self.nome = ' '.join([x.strip() for x in self.nome.replace('\t', ' ').split(' ') if x.strip()])
-        self.sobrenome = ' '.join([x.strip() for x in self.sobrenome.replace('\t', ' ').split(' ') if x.strip()])
+        self.nome = ' '.join([x.strip().capitalize() for x in self.nome.replace('\t', ' ').split(' ') if x.strip()])
+        self.sobrenome = ' '.join([x.strip().capitalize() for x in self.sobrenome.replace('\t', ' ').split(' ') if x.strip()])
         self.nome_completo = unidecode(" ".join([self.nome, self.sobrenome]).lower())
         return super(Pessoa, self).save(*args, **kwargs)
 

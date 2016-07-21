@@ -13,14 +13,30 @@ Atendimento
 
 {% block content %}
 <h1>Atendimento</h1>
-<form class="form-horizontal">
+<form action="." method="get" class="form-horizontal">
     <div class="form-group">
         <div class="col-xs-9">
-            <input type="text" class="form-control" name="q">
+            <input type="text" class="form-control" name="q" value="{{ q }}">
         </div>
         <div class="col-xs-3">
             <button type="submit" class="btn btn-primary">Buscar</button>
         </div>
     </div>
 </form>
+<table id="pessoa-lista" class="table table-striped">
+    <thead>
+    <tr>
+        <th>Nome</th>
+        <th>Sobrenome</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for pessoa in object_list %}
+        <tr class="selectable" data-url="{% url 'pessoas-visualizar' pessoa.pk %}">
+            <td>{{ pessoa.nome }}</td>
+            <td>{{ pessoa.sobrenome }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
 {% endblock %}

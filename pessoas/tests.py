@@ -28,10 +28,18 @@ class PessoaTeste(TestCase):
 
         self.assertEquals(None, pessoa.tratamento)
 
+    def test_nome_capital(self):
+        pessoa = Pessoa.objects.create(nome='teste rodrigo', sobrenome='teste2')
+        self.assertEquals('Teste Rodrigo', pessoa.nome)
+
+    def test_sobrenome_capital(self):
+        pessoa = Pessoa.objects.create(nome='teste', sobrenome='teste2 silva')
+        self.assertEquals('Teste2 Silva', pessoa.sobrenome)
+
     def test_remover_espacos_nome(self):
         pessoa = Pessoa.objects.create(nome=' \t  luiz   \t carlos\tdaniel  \t', sobrenome='  \t romero  \t silva\tfilho  \t  ')
-        self.assertEquals('luiz carlos daniel', pessoa.nome)
-        self.assertEquals('romero silva filho', pessoa.sobrenome)
+        self.assertEquals('Luiz Carlos Daniel', pessoa.nome)
+        self.assertEquals('Romero Silva Filho', pessoa.sobrenome)
 
     def test_nome_completo(self):
         pessoa = Pessoa.objects.create(nome='luiz carlos', sobrenome='romero filho')
@@ -45,7 +53,7 @@ class PessoaTeste(TestCase):
         pessoa1 = Pessoa.objects.create(nome='luiz carlos', sobrenome='romero filho')
         pessoa2 = Pessoa.objects.create(nome='carlos', sobrenome='gonçalves romeu dos santos')
 
-        self.assertEquals(0, len(Pessoa.objects.filter_by_name('ca')))
+        self.assertEquals(2, len(Pessoa.objects.filter_by_name('ca')))
         self.assertEquals(2, len(Pessoa.objects.filter_by_name('car')))
         self.assertEquals(2, len(Pessoa.objects.filter_by_name('rome')))
         self.assertEquals(1, len(Pessoa.objects.filter_by_name('romero')))
@@ -57,7 +65,7 @@ class PessoaTeste(TestCase):
         self.assertEquals(1, len(Pessoa.objects.filter_by_name('carlos filho')))
         self.assertEquals(1, len(Pessoa.objects.filter_by_name('carlos goncalves')))
         self.assertEquals(1, len(Pessoa.objects.filter_by_name('carlos gonçalves')))
-        self.assertEquals(0, len(Pessoa.objects.filter_by_name('ca go')))
+        self.assertEquals(1, len(Pessoa.objects.filter_by_name('ca go')))
 
 # Testes de funcao
 class ListarPessoasTeste(WebTest):
@@ -93,7 +101,7 @@ class AdicionarPessoasTeste(WebTest):
         adicionar.form['nome'] = 'teste'
         adicionar.form['sobrenome'] = 'testesobrenome'
         adicionar.form.submit()
-        self.assertTrue(Pessoa.objects.filter(nome='teste').exists())
+        self.assertTrue(Pessoa.objects.filter(nome__iexact='teste').exists())
 
     def test_retorna_pra_listagem_apos_salvar(self):
         adicionar = self.app.get(reverse('pessoas-adicionar'))
@@ -150,5 +158,5 @@ class AtualizarPessoasTeste(WebTest):
         atualizar.form['nome'] = 'novo nome'
         resultado = atualizar.form.submit()
         self.assertRedirects(resultado, reverse('pessoas-visualizar', args=[pessoa.pk,]))
-        self.assertEqual('novo nome', Pessoa.objects.get(pk=pessoa.pk).nome)
+        self.assertEqual('Novo Nome', Pessoa.objects.get(pk=pessoa.pk).nome)
 
