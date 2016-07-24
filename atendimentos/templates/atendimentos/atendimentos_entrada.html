@@ -1,4 +1,7 @@
 {% extends "layout.html" %}
+
+{% load staticfiles %}
+
 {% block title_url %}
 {% url "atendimentos-entrada" %}
 {% endblock %}
@@ -23,7 +26,7 @@ Atendimento
         </div>
     </div>
 </form>
-<table id="pessoa-lista" class="table table-striped">
+<table id="atendimentos-lista" class="table table-striped">
     <thead>
     <tr>
         <th>Nome</th>
@@ -32,11 +35,15 @@ Atendimento
     </thead>
     <tbody>
     {% for pessoa in object_list %}
-        <tr class="selectable" data-url="{% url 'pessoas-visualizar' pessoa.pk %}">
+        <tr class="selectable" data-url="{% url 'atendimentos-visualizar' pessoa.pk %}">
             <td>{{ pessoa.nome }}</td>
             <td>{{ pessoa.sobrenome }}</td>
         </tr>
     {% endfor %}
     </tbody>
 </table>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{% static "js/atendimentos.js" %}"></script>
 {% endblock %}

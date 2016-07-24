@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% load staticfiles %}
+
+{% block title_url %}
+{% url "atendimentos-entrada" %}
+{% endblock %}
+
+{% block title %}
+Atendimentos - {{ pessoa }}
+{% endblock %}
+
+{% block navbar %}
+{% include "bits/navbar.html" with atendimentos=True %}
+{% endblock %}
+
+{% block content %}
+<h1>Atendimento</h1>
+
+<table id="atendimentos-lista" class="table table-striped">
+    <thead>
+    <tr>
+        <th>Evento</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for atendimento in object_list %}
+        <tr>
+            <td>{{ atendimento.get_evento_display }}</td>
+            <td></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
